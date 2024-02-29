@@ -25,6 +25,11 @@ jobs:
     - name: Set env
       run: echo "OUTPUT_DIR=/app/output" >> $GITHUB_ENV
     - run: mkdir -p ${{ env.OUTPUT_DIR }}
+    - name: Create deviceInfo file
+      run: |
+        cat <<EOT > /app/deviceInfo.xml
+        ${{ secrets.DEVICE_INFO }}
+        EOT
     - name: Create config file
       env:
         DEFAULT_WORKOUT_NUM: 5
@@ -32,7 +37,8 @@ jobs:
         cat <<EOT > /app/configuration.local.json 
         {
           "App": {
-            "EnablePolling": false
+            "EnablePolling": false,
+            "CheckForUpdates": false
           },
           "Format": {
             "Fit": true,
@@ -40,10 +46,19 @@ jobs:
             "Tcx": false,
             "SaveLocalCopy": ${{ github.event.inputs.saveLocalCopy || false }},
             "IncludeTimeInHRZones": false,
-            "IncludeTimeInPowerZones": false
+            "IncludeTimeInPowerZones": false,
+            "DeviceInfoPath": "/app/deviceInfo.xml"
           },
           "Peloton": {
             "NumWorkoutsToDownload": ${{ github.event.inputs.workoutsToDownload || env.DEFAULT_WORKOUT_NUM }},
+            "ExcludeWorkoutTypes": [
+                "Cycling",
+                "OutdoorCycling",
+                "BikeBootcamp",
+                "OutdoorRunning",
+                "OutdoorWalking",
+                "Meditation"
+            ]
           },
           "Garmin": {
             "Upload": true,
