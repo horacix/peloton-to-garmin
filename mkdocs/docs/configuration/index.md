@@ -1,11 +1,11 @@
 # Configuration
 
-## How are you running P2G?
+## 👋 How are you running P2G?
 
 1. [I'm using the Web UI](#web-ui-configuration)
 1. [I'm using the Windows GUI](#windows-ui-configuration)
 1. [I'm using GitHub Actions](#config-file)
-1. [I'm running Headless](#config-file)
+1. [I'm running Headless/Console Application](#config-file)
 
 ## Web UI Configuration
 
@@ -36,7 +36,7 @@ When using a flavor of P2G that does not provide a user interface, all settings 
 
 P2G looks for a file named `configuration.local.json` in the same directory where it is run to load its settings.
 
-The structure of this file is as follows:
+The structure of this file is as follows. Click the `+` to explore the details of each section.
 
 ```json
 {
@@ -55,6 +55,7 @@ The structure of this file is as follows:
 5. Go to [Observability Settings Documentation](observability.md)
 
 !!! tip
+
     P2G provides an [example config](https://github.com/philosowaffle/peloton-to-garmin/blob/master/configuration.example.json) to get you started.
 
 ## Additional Configuration Options
