@@ -23,7 +23,7 @@ jobs:
     name: 🔄 Sync
     runs-on: ubuntu-latest
     container: 
-      image:  philosowaffle/peloton-to-garmin:console-stable
+      image:  horacix/peloton-to-garmin:latest
       options: --user root
     steps:
 
