@@ -71,3 +71,7 @@ The **resistance-band table** shows the circumference each resistance range woul
 ```bash
 cd tools/wheel-size && python3 -m unittest -v
 ```
+
+## Want exact speed instead?
+
+A cadence-only sensor can't see resistance, so a single wheel size is always a compromise. [`tools/peloton-ble-bridge`](../peloton-ble-bridge/README.md) is a small device that reads power from the bike's sensor cable and broadcasts speed calculated from it.
